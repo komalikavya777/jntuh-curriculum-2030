@@ -344,3 +344,37 @@ R22B.Tech.CSECourseStructureSyllabus2.pdf, accessed 14 Sept 2026): no "Web Techn
 course exists anywhere in the 8-semester core structure. "Full Stack Development" appears
 only as CS631PE, an option inside Professional Elective III — not a mandatory core subject.
 The model generated a plausible-sounding but fabricated core list rather than the real one.
+
+## 4 · The 2026 reality
+
+Six things that have genuinely changed in my field since R22 was written, each with a source and the course code it affects.
+
+**1. AI agents have gone from research topic to enterprise default — affects CS603PC (Artificial Intelligence)**
+Gartner recorded a 1,445% surge in multi-agent-system inquiries between Q1 2024 and Q2 2025, and forecasts 40% of enterprise applications will include task-specific AI agents by the end of 2026, up from under 5% in 2025.
+Source: Gartner, "Multiagent Systems in Enterprise AI" / Gartner newsroom press release, 26 Aug 2025, accessed 15 Sept 2026.
+CS603PC has no unit on agents, tool use, or multi-agent coordination — the syllabus predates this shift.
+
+**2. Vector databases and RAG are now standard AI infrastructure — affects CS404PC (DBMS)**
+The global vector database market is projected to grow from $2.65B (2025) to $8.95B (2030), a 27.5% CAGR, driven by retrieval-augmented generation (RAG) becoming standard enterprise architecture.
+Source: MarketsandMarkets, "Vector Database Market Report 2025-2030," accessed 15 Sept 2026.
+CS404PC has no unit on similarity search or embedding-based retrieval — the gap I flagged in Section 3.
+
+**3. AI-assisted coding has measurably reshaped how software is written — affects CS405PC (Software Engineering)**
+GitHub's Octoverse 2025 report found 80% of new developers use GitHub Copilot within their first week, and that AI tooling drove TypeScript past Python and JavaScript to become GitHub's most-used language for the first time, in August 2025. The same report found commit comments fell 27% even as pull requests rose 20% — less human review discussion alongside more AI-generated code.
+Source: GitHub Blog, "Octoverse 2025," accessed 15 Sept 2026.
+CS405PC's Waterfall/SRS-heavy syllabus (REDUCE, Section 3) has no content on AI-assisted development workflows or on reviewing AI-generated code.
+
+**4. ARM is now the default cloud server architecture, not a niche one — affects CS304PC (Computer Organization & Architecture)**
+For the third year running, more than half of all new CPU capacity added to AWS is powered by Graviton (ARM-based), and 98% of AWS's top 1,000 EC2 customers now run on it.
+Source: AWS / Business Wire, "AWS Introduces Graviton5," accessed 15 Sept 2026.
+Confirms the UPDATE argument in Section 3 — CS304PC's x86/legacy-instruction-set emphasis doesn't reflect what's actually running in production cloud today.
+
+**5. AI-generated phishing and deepfakes are now a dominant attack vector — affects CS701PC (Cryptography & Network Security)**
+83% of phishing emails are now AI-generated, and deepfake fraud cost documented victims over $1.28 billion in 2025 across 1,567 verified incidents.
+Source: KnowBe4 2025 Phishing Trends Threat Report; Resemble AI 2025 Deepfake Threat Report, accessed 15 Sept 2026.
+CS701PC (UPDATE, Section 3) has no unit on synthetic-media or AI-assisted social-engineering threats — only classical cipher mechanics.
+
+**6. Post-quantum cryptography has moved from draft to binding deadline — affects CS701PC (Cryptography & Network Security)**
+CISA and NSA must publish a list of quantum-safe product categories by 1 Dec 2025, with TLS 1.3 (or successor) adoption required by 2 Jan 2030. NIST's HQC algorithm is expected to be finalized as a standard by 2026-2027.
+Source: SafeLogic, "PQC Compliance Standards," accessed 15 Sept 2026.
+R22 has zero post-quantum content — this is now a regulatory deadline, not a theoretical future concern.
