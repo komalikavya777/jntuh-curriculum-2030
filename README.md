@@ -378,3 +378,76 @@ CS701PC (UPDATE, Section 3) has no unit on synthetic-media or AI-assisted social
 CISA and NSA must publish a list of quantum-safe product categories by 1 Dec 2025, with TLS 1.3 (or successor) adoption required by 2 Jan 2030. NIST's HQC algorithm is expected to be finalized as a standard by 2026-2027.
 Source: SafeLogic, "PQC Compliance Standards," accessed 15 Sept 2026.
 R22 has zero post-quantum content — this is now a regulatory deadline, not a theoretical future concern.
+
+## 5 · Curriculum vs industry
+
+I checked what a CSE graduate is expected to do against what my R22 degree actually produces, using real job postings for entry-level roles. Four postings, all checked live on 15 September 2026. Three are employer-side or major-aggregator listings; the fourth is labelled as an institute-curated listing, with its employer-side source given.
+
+---
+
+**Job 1 — Software Engineer (SDE I), Amazon-affiliated ad-tech role, Bengaluru**
+https://cutshort.io/job/Software-Engineer-SDE-I-Bengaluru-Bangalore-Amazon-aaj4e76Y
+Checked live, 15 Sept 2026.
+
+Asks for: strong Java + OOP and design patterns (CS305PC), basic SQL/relational databases (CS404PC), debugging and testing (CS406PC/CS407PC labs), collaboration on system design and code reviews.
+
+**Agreement:** core DSA/OOP/DBMS material maps directly — R22 covers this well. CS302PC, CS305PC and CS404PC produce exactly the foundations this role screens for, and Section 3 labels all three KEEP or UPDATE, never REDUCE.
+
+**Gap:** nothing in R22 teaches code review as a practice, or working inside an existing large codebase. Every lab in the eight-semester structure asks the student to build from scratch — CS306PC, CS307PC, CS406PC, CS407PC, CS704PC all specify "write a program to implement…". There is no experiment anywhere in R22 that hands a student someone else's code and asks them to change it safely. This is the gap Section 6's new Software Practice course (II-II, 3 credits) exists to close.
+
+---
+
+**Job 2 — DevOps Engineer (Azure / Kubernetes / Docker / Terraform / CI-CD), Cavin Infotech, Chennai**
+https://in.linkedin.com/jobs/view/cavin-infotech-hiring-devops-engineer-azure-kubernetes-docker-terraform-ci-cd-cloud-engineer-azure-devops-linux-at-fresher-door-4441172901
+Checked live, 15 Sept 2026.
+
+Asks for: Docker, Kubernetes, Terraform (infrastructure-as-code), CI/CD pipelines, Linux administration — all at fresher/entry level.
+
+**Agreement:** this is close to exactly CS503PC/CS505PC's stated scope (DevOps, 3+1 credits) in R22.
+
+**Disagreement, and this is the sharpest finding in this section:** R25 constituent colleges cuts this subject to a single 1-credit "skill development" course (see Section 3, item 7) — in the same year a real Chennai employer is hiring freshers specifically for Kubernetes/Terraform/CI-CD skills. The market is asking for more of exactly what R25 is removing. Note also that JNTUH's own affiliated-colleges R25 document keeps DevOps at 3 credits plus its lab, so the university has published two opposite answers to this question in the same regulation cycle.
+
+---
+
+**Job 3 — Junior Gen AI / Agentic AI Engineer, Infosys**
+https://www.themuse.com/jobs/infosys/gen-ai-agentic-ai-engineer-a9d8c6
+Checked live, 15 Sept 2026.
+
+*Location caveat, stated rather than buried:* this specific listing is posted for an Infosys US office (Alpharetta, GA and similar), not an India location. I kept it because Infosys is one of the largest recruiters of JNTUH CSE graduates, its skill requirements are set centrally rather than per-geography, and this was the clearest live, individually-linkable GenAI-specific posting I could verify. Several India-located GenAI/Data Scientist listings I found were either aggregator index pages with no stable per-role URL, or had already closed — recorded in Section 7c. Job 4 below was added specifically to answer this weakness with an India-located role.
+
+Asks for: Python + Hugging Face Transformers/LangChain/PyTorch, understanding of LLMs, embeddings and vector search, RAG pipeline development, vector databases (FAISS, Pinecone), prompt engineering, and REST APIs (FastAPI/Flask) — for a role explicitly labelled "Junior."
+
+**Agreement:** basic Python (CS206ES) and API/web-framework exposure (CS409PC) are covered in R22.
+
+**Disagreement:** every other skill this listing asks for — embeddings, vector search, RAG, prompt engineering, LangChain-style agent frameworks — is absent from R22 entirely, and only partially answered by R25. R25 constituent colleges adds a single 1-credit Prompt Engineering practical (III-I) and offers Generative AI as a Professional Elective II *option*, but has no unit on embeddings, vector search or RAG pipelines anywhere in the CSE structure. A role labelled "Junior" in 2026 already assumes more GenAI-systems knowledge than either R22 or R25 teaches.
+
+---
+
+**Job 4 — AI / ML Engineer Intern (LangChain, RAG, Agentic AI), CAW.Tech (CAW Studios), Hyderabad**
+Listing: https://cloudsoftsol.com/jobs/caw-tech-ai-ml-engineer-intern-langchain-rag-agentic-hyderabad-2026/
+Employer's own careers portal, given on that listing: https://caw.tech/careers/
+Checked live, 15 Sept 2026. Posted 26 May 2026.
+
+*Source label, stated up front:* cloudsoftsol.com is a Hyderabad training institute that curates postings, so this is an **aggregator listing, not the employer's own page** — credible secondary by the classification the brief uses. I am using it because it is India-located, Hyderabad-based, explicitly open to freshers and final-year students, and because the employer-side portal is linked from it. Where the aggregator adds its own commentary (training pitches, salary estimates), I have ignored it and read only the responsibilities and requirements sections.
+
+Asks for: Python and basic ML/DL; LangChain and LangGraph for building tool-using agents with planning loops, memory and guardrails; RAG systems including chunking, embedding and retrieval tuning; vector databases; transformers and multimodal inputs; model deployment as a monitored service. Experience band: fresher to 1 year, on-site Hyderabad.
+
+**Agreement:** Python (CS206ES) and ML fundamentals (CS601PC, CS604PC) are in R22, and CS603PC Artificial Intelligence gives a classical grounding in search and knowledge representation.
+
+**Disagreement, in two specific places:**
+
+*First, agents.* The posting's first listed responsibility is building autonomous agents with planning loops, memory and tool use. CS603PC's R22 syllabus covers classical AI — search, logic, knowledge representation — and has no unit on tool use, planning loops in an LLM setting, or multi-agent coordination. This is the course code Section 4 item 1 (Gartner's 1,445% rise in multi-agent-system enquiries) attaches to, and this posting is the demand side of that same finding, from an employer twenty minutes from my own campus.
+
+*Second, and more important for this report's argument: this posting asks for evaluation as a named skill.* It lists "evaluation harnesses that quantify answer quality," "measuring their reliability on real tasks rather than demos," and states as a requirement "the discipline to evaluate, not just build."
+
+That last phrase is the strongest external evidence in this whole report for the central finding. My five (a)/(b) tests in Section 3 all landed in the same place independently: the model produces the artefact and misses the check. Here an employer, hiring at fresher level in my own city, has written that distinction into a requirements list. R22 does not teach it. R25 does not teach it either — its answer to 2026 is more AI *production* content (Deep Learning core, ML earlier, Prompt Engineering, Generative AI elective, NLP core), and nothing on evaluation. This posting is why Section 6 spends 3 credits on a Verification & Evaluation of AI Systems course rather than on a second security core.
+
+The posting also asks for a public GitHub or a deployed demo. R22 has no course in which version control is taught or a repository is submitted; lab work is handed in as a written record. Section 6 places Git in I-I partly for this reason.
+
+---
+
+**Cross-cutting pattern across all postings checked**
+
+Every fresher-level posting I reviewed, live or expired, converged on the same five things regardless of role: Git, SQL basics, one general-purpose language with OOP, cloud-platform basics (AWS/Azure/GCP), and CI/CD familiarity.
+
+R22 covers the first three solidly — CS305PC (Java/OOP), CS404PC (SQL), CS302PC/CS306PC (DSA) — and the last two barely at all. DevOps is one 3-credit course, there is no dedicated cloud unit anywhere in eight semesters, and Git appears nowhere in the structure. That is the same gap Section 4's ARM/Graviton finding and Section 3's DevOps disagreement both point at from different angles, and it is where the largest single block of Section 6's redesign spends its credits: Git (I-I, 2 credits), Data Systems (III-I, 4 credits) and Cloud & Distributed Systems (III-II, 4 credits).
