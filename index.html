@@ -103,9 +103,27 @@ a{color:var(--add)}
 @media (prefers-reduced-motion:no-preference){
   .balance .v{transition:color .25s ease}
 }
+
 </style>
 </head>
 <body>
+<section id="calc">
+  <h2>Try your own addition</h2>
+  <p class="lede">Pick a semester and propose a new course. Every semester in my 2030 structure is fixed at 20 credits — see what has to come out to make room for it.</p>
+  <div class="controls" style="position:static">
+    <div class="ctl-row">
+      <b>Semester</b>
+      <select id="calc-sem" class="chip" style="cursor:pointer"></select>
+    </div>
+    <div class="ctl-row">
+      <b>New course</b>
+      <input id="calc-credits" type="number" min="1" max="10" value="3" class="chip" style="width:4rem;cursor:text">
+      <span class="delta">credits</span>
+      <button class="chip" id="calc-btn" aria-pressed="false">Check balance</button>
+    </div>
+  </div>
+  <div id="calc-result" class="empty"></div>
+</section>
 <div class="wrap">
 
 <header class="hero">
@@ -370,7 +388,43 @@ document.querySelectorAll("button.chip").forEach(btn => {
     render();
   });
 });
+function setupCalculator(){
+  const semSelect = document.getElementById("calc-sem");
+  const sems = [];
+  COURSES.forEach(c => { if(!sems.includes(c[1])) sems.push(c[1]); });
+  semSelect.innerHTML = sems.map(s => `<option value="${s}">${s}</option>`).join("");
 
+  document.getElementById("calc-btn").addEventListener("click", () => {
+    const sem = semSelect.value;
+    const addCredits = Number(document.getElementById("calc-credits").value) || 0;
+    const rows = COURSES.filter(c => c[1] === sem && c[5] > 0); // "new" (2030) view only
+    const current = rows.reduce((s,c) => s + c[5], 0);
+    const after = current + addCredits;
+    const over = after - 20;
+
+    const resultEl = document.getElementById("calc-result");
+    if(over <= 0){
+      resultEl.innerHTML = `<p><strong>${sem}</strong> is at ${fmt(current)} credits. Adding a ${addCredits}-credit course brings it to ${fmt(after)} — fits within 20, no cut needed.</p>`;
+      return;
+    }
+
+    // candidates: rows without a fixed "keep/update/add" label are the flexible slots (electives)
+    const flexible = rows.filter(c => !c[6] || c[6] === "").sort((a,b) => b[5]-a[5]);
+    let stillNeeded = over, cuts = [];
+    for(const c of flexible){
+      if(stillNeeded <= 0) break;
+      cuts.push(c);
+      stillNeeded -= c[5];
+    }
+    const cutText = cuts.length
+      ? cuts.map(c => `${c[3]} (${fmt(c[5])} cr)`).join(", ")
+      : "no flexible elective slots left in this semester — a named core subject would have to be reduced instead";
+
+    resultEl.innerHTML = `<p><strong>${sem}</strong> is already at ${fmt(current)} credits. Adding a ${addCredits}-credit course pushes it to ${fmt(after)} — <strong>${over} credit${over>1?'s':''} over</strong>. To stay balanced, cut: ${cutText}${stillNeeded>0 ? ' — and that still leaves '+stillNeeded+' credit(s) short.' : '.'}</p>`;
+  });
+}
+
+setupCalculator();
 renderLedger();
 render();
 </script>
