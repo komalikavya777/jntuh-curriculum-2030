@@ -146,6 +146,8 @@
 | 17 | Compiler Design | CS702PC | IV-I | UPDATE |
 | — | Cloud Infrastructure / Distributed Systems | *(missing)* | — | ADD |
 
+**Excluded from labelling:** CS408PC (Real-time Research/Societal Project, II-II), CS606PC (Mini Project/Internship/Skill Dev, III-II) and CS705PC (Project Stage I, IV-I) carry no fixed syllabus content to evaluate against a KEEP/UPDATE/REDUCE/ADD label — they're graded on a student-chosen project or placement, not a taught unit. They stay in the credit ledger (Section 6) exactly as-is, untouched by the redesign.
+
 ### Detailed arguments (9 subjects, with (a)/(b) AI tests on 5)
 
 ---
@@ -307,7 +309,6 @@ R22B.Tech.CSECourseStructureSyllabus2.pdf, accessed 14 Sept 2026): no "Web Techn
 course exists anywhere in the 8-semester core structure. "Full Stack Development" appears
 only as CS631PE, an option inside Professional Elective III — not a mandatory core subject.
 The model generated a plausible-sounding but fabricated core list rather than the real one.
-
 ## 4 · The 2026 reality
 
 Six things that have genuinely changed in my field since R22 was written, each with a source and the course code it affects.
