@@ -216,8 +216,7 @@ when a book has zero copies available. It produced a correct MySQL trigger, logi
 for one request at a time. That is (a). Pushed with two simultaneous inserts for the last
 copy of the same book, the model flagged the race condition but its first fix — "add a
 lock" — was vague, and it took a second push before it named `SELECT ... FOR UPDATE`
-specifically. That is (b), and it is the second time in this report a model's first answer
-missed a concurrency bug unprompted, not a one-off. So: UPDATE — keep the transaction and
+specifically. That is (b) — and it fits the same shape as the other four tests in this report: the model's first answer works and looks complete, and the thing wrong with it only surfaces once you push specifically for the failure case. So: UPDATE — keep the transaction and
 concurrency units at full weight, add the NoSQL/vector gap separately.
 
 ---
