@@ -29,27 +29,22 @@ All sources grouped the way the brief itself groups them. Access dates recorded 
 - **HKAIVERSE Round 2 Curriculum Intelligence Challenge — assignment brief**
   (provided directly by HKAIVERSE inside my candidate account)
   Accessed: 14 September 2026
+  
+## Own lab records and assignments (evidence for Section 3's (a)/(b) tests)
 
-## Job descriptions (Section 5)
+These are my own physical/photographed lab records and assignment sheets, not published
+documents — listed here as the primary evidence each (a)/(b) test was run against.
 
-- **Job 1 — Software Engineer (SDE I), Amazon-affiliated ad-tech role, Bengaluru**
-  https://cutshort.io/job/Software-Engineer-SDE-I-Bengaluru-Bangalore-Amazon-aaj4e76Y
-  Accessed: 15 September 2026
-
-- **Job 2 — DevOps Engineer (Azure / Kubernetes / Docker / Terraform / CI-CD), Cavin Infotech, Chennai**
-  https://in.linkedin.com/jobs/view/cavin-infotech-hiring-devops-engineer-azure-kubernetes-docker-terraform-ci-cd-cloud-engineer-azure-devops-linux-at-fresher-door-4441172901
-  Accessed: 15 September 2026
-
-- **Job 3 — Junior Gen AI / Agentic AI Engineer, Infosys**
-  https://www.themuse.com/jobs/infosys/gen-ai-agentic-ai-engineer-a9d8c6
-  Accessed: 15 September 2026
-  Posted for a US office (Alpharetta, GA), not India — labelled as such in Section 5.
-
-- **Job 4 — AI / ML Engineer Intern (LangChain, RAG, Agentic AI), CAW.Tech, Hyderabad**
-  Listing: https://cloudsoftsol.com/jobs/caw-tech-ai-ml-engineer-intern-langchain-rag-agentic-hyderabad-2026/
-  Employer careers page: https://caw.tech/careers/
-  Accessed: 15 September 2026
-  Aggregator listing, labelled as credible secondary rather than employer-primary in Section 5; employer's own careers portal given alongside it.
+- **CS704PC Compiler Design Lab, R22 B.Tech CSE, JNTUHCES** — experiment 10 (recursive
+  descent parser). Own lab record.
+- **CS602PC Formal Languages and Automata Theory — handwritten assignment sheet**,
+  questions 1-24 (DFA/NFA construction). Own coursework.
+- **CS306PC Data Structures Lab, R22 B.Tech CSE, JNTUHCES** — experiment 8 (AVL trees).
+  Own lab record.
+- **CS407PC Database Management Systems Lab, R22 B.Tech CSE, JNTUHCES** — experiment 8
+  (triggers). Own lab record.
+- **CS505PC DevOps Lab, R22 B.Tech CSE, JNTUHCES** — experiments 4-5, 7 (Jenkins CI/CD,
+  Docker containerization). Own lab record.
 
 ## Field-change sources (Section 4)
 
@@ -80,6 +75,28 @@ All sources grouped the way the brief itself groups them. Access dates recorded 
 - **SafeLogic, "PQC Compliance Standards"**
   Accessed: 15 September 2026
   Used for: the CISA/NSA quantum-safe product category deadline (1 Dec 2025) and the binding TLS 1.3-or-successor adoption deadline (2 Jan 2030); NIST's HQC algorithm expected finalized 2026-2027. Affects CS701PC.
+
+
+## Job descriptions (Section 5)
+
+- **Job 1 — Software Engineer (SDE I), Amazon-affiliated ad-tech role, Bengaluru**
+  https://cutshort.io/job/Software-Engineer-SDE-I-Bengaluru-Bangalore-Amazon-aaj4e76Y
+  Accessed: 15 September 2026
+
+- **Job 2 — DevOps Engineer (Azure / Kubernetes / Docker / Terraform / CI-CD), Cavin Infotech, Chennai**
+  https://in.linkedin.com/jobs/view/cavin-infotech-hiring-devops-engineer-azure-kubernetes-docker-terraform-ci-cd-cloud-engineer-azure-devops-linux-at-fresher-door-4441172901
+  Accessed: 15 September 2026
+
+- **Job 3 — Junior Gen AI / Agentic AI Engineer, Infosys**
+  https://www.themuse.com/jobs/infosys/gen-ai-agentic-ai-engineer-a9d8c6
+  Accessed: 15 September 2026
+  Posted for a US office (Alpharetta, GA), not India — labelled as such in Section 5.
+
+- **Job 4 — AI / ML Engineer Intern (LangChain, RAG, Agentic AI), CAW.Tech, Hyderabad**
+  Listing: https://cloudsoftsol.com/jobs/caw-tech-ai-ml-engineer-intern-langchain-rag-agentic-hyderabad-2026/
+  Employer careers page: https://caw.tech/careers/
+  Accessed: 15 September 2026
+  Aggregator listing, labelled as credible secondary rather than employer-primary in Section 5; employer's own careers portal given alongside it.
 
 ## CREDIBLE SECONDARY
 
