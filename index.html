@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R22 → 2030 · a credit audit of B.Tech CSE at JNTUHCES</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#e9edef;
+  --card:#f4f7f8;
+  --ink:#14222b;
+  --ink-soft:#4c626e;
+  --rule:#c2cdd3;
+  --keep:#2f6b4f;
+  --update:#8a6414;
+  --reduce:#a33b2a;
+  --add:#275c8e;
+  --cut:#7d8a91;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,sans-serif;
+  font-size:16px;line-height:1.6;
+}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem 5rem}
+.num{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+
+/* ---------- hero: the balance itself ---------- */
+header.hero{padding:3.5rem 0 2rem;border-bottom:1px solid var(--rule)}
+.kicker{font-size:.85rem;color:var(--ink-soft);margin:0 0 1rem}
+h1{
+  font-family:Newsreader,Georgia,serif;font-weight:400;
+  font-size:clamp(2rem,6vw,3.4rem);line-height:1.1;margin:0 0 1.25rem;max-width:22ch;
+}
+.standfirst{max-width:60ch;color:var(--ink-soft);margin:0 0 2.25rem}
+.balance{
+  display:flex;flex-wrap:wrap;align-items:stretch;gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;
+}
+.balance div{flex:1 1 9rem;background:var(--card);padding:1rem 1.1rem}
+.balance .v{font-family:"IBM Plex Mono",monospace;font-size:1.65rem;display:block;line-height:1.2}
+.balance .k{font-size:.8rem;color:var(--ink-soft)}
+.balance .settled .v{color:var(--keep)}
+
+/* ---------- sections ---------- */
+section{padding-top:3rem}
+h2{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:1.65rem;margin:0 0 .4rem}
+.lede{color:var(--ink-soft);max-width:62ch;margin:0 0 1.5rem}
+
+/* ---------- controls ---------- */
+.controls{
+  position:sticky;top:0;z-index:5;background:var(--paper);
+  padding:.9rem 0;border-bottom:1px solid var(--rule);margin-bottom:1.25rem
+}
+.ctl-row{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin-bottom:.5rem}
+.ctl-row:last-child{margin-bottom:0}
+.ctl-row b{font-weight:500;font-size:.8rem;color:var(--ink-soft);min-width:5.5rem}
+button.chip{
+  font:inherit;font-size:.85rem;cursor:pointer;
+  background:var(--card);color:var(--ink-soft);
+  border:1px solid var(--rule);border-radius:2px;padding:.3rem .7rem;
+}
+button.chip:hover{color:var(--ink)}
+button.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+button.chip:focus-visible{outline:2px solid var(--add);outline-offset:2px}
+
+/* ---------- semester tables ---------- */
+.sem{margin-bottom:2rem}
+.sem h3{
+  font-size:.95rem;font-weight:600;margin:0 0 .5rem;
+  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  border-bottom:1px solid var(--rule);padding-bottom:.35rem
+}
+.sem h3 span{font-family:"IBM Plex Mono",monospace;font-weight:400;color:var(--ink-soft);font-size:.85rem}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+td{padding:.45rem .5rem .45rem 0;vertical-align:top;border-bottom:1px solid rgba(194,205,211,.5)}
+td.code{width:6.5rem;color:var(--ink-soft);font-family:"IBM Plex Mono",monospace;font-size:.8rem;white-space:nowrap}
+td.cr{width:4.5rem;text-align:right;font-family:"IBM Plex Mono",monospace;padding-right:0}
+td.tag{width:5.5rem;text-align:right;font-size:.72rem;letter-spacing:.02em}
+.t-keep{color:var(--keep)} .t-update{color:var(--update)} .t-reduce{color:var(--reduce)}
+.t-add{color:var(--add)} .t-cut{color:var(--cut)}
+tr.gone td:not(.tag){color:var(--cut);text-decoration:line-through;text-decoration-color:var(--rule)}
+tr.fresh td{background:rgba(39,92,142,.06)}
+.delta{font-size:.78rem;color:var(--ink-soft)}
+.empty{color:var(--ink-soft);font-size:.9rem;padding:.6rem 0}
+
+/* ---------- ledger ---------- */
+.ledger{display:grid;grid-template-columns:1fr;gap:1.5rem}
+@media(min-width:44rem){.ledger{grid-template-columns:1fr 1fr}}
+.col h4{margin:0 0 .5rem;font-size:.9rem;font-weight:600}
+.col table{font-size:.86rem}
+.col .cr{width:3rem}
+.foot td{border-top:2px solid var(--ink);border-bottom:none;font-weight:600;padding-top:.5rem}
+
+footer{margin-top:4rem;padding-top:1.5rem;border-top:1px solid var(--rule);font-size:.85rem;color:var(--ink-soft)}
+footer a{color:var(--ink)}
+a{color:var(--add)}
+@media (prefers-reduced-motion:no-preference){
+  .balance .v{transition:color .25s ease}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <p class="kicker">B.Tech Computer Science &amp; Engineering · JNTUH College of Engineering, Sultanpur · regulation R22</p>
+  <h1>Every credit I add has to come out of one I named.</h1>
+  <p class="standfirst">A redesign of my own degree for students graduating in 2030, argued against JNTUH's own R25 constituent-colleges structure. The rule I set myself was stricter than the brief's: not just a balanced total, but every one of the eight semesters still landing on exactly 20 credits.</p>
+  <div class="balance">
+    <div><span class="v num" id="b-out">33</span><span class="k">credits removed</span></div>
+    <div><span class="v num" id="b-in">33</span><span class="k">credits added</span></div>
+    <div class="settled"><span class="v num" id="b-net">0</span><span class="k">out of balance</span></div>
+    <div><span class="v num" id="b-pct">20.6%</span><span class="k">of the 160-credit degree</span></div>
+  </div>
+</header>
+
+<section id="map">
+  <h2>The eight-semester map</h2>
+  <p class="lede">Switch between what I am studying now and what I would replace it with. Filter by year, or by the label each core subject carries in Section 3.</p>
+
+  <div class="controls">
+    <div class="ctl-row">
+      <b>Showing</b>
+      <button class="chip" data-view="r22" aria-pressed="true">R22, as taught</button>
+      <button class="chip" data-view="new" aria-pressed="false">My 2030 structure</button>
+    </div>
+    <div class="ctl-row">
+      <b>Year</b>
+      <button class="chip" data-year="all" aria-pressed="true">All</button>
+      <button class="chip" data-year="1" aria-pressed="false">I</button>
+      <button class="chip" data-year="2" aria-pressed="false">II</button>
+      <button class="chip" data-year="3" aria-pressed="false">III</button>
+      <button class="chip" data-year="4" aria-pressed="false">IV</button>
+    </div>
+    <div class="ctl-row">
+      <b>Label</b>
+      <button class="chip" data-label="all" aria-pressed="true">All</button>
+      <button class="chip" data-label="keep" aria-pressed="false">Keep</button>
+      <button class="chip" data-label="update" aria-pressed="false">Update</button>
+      <button class="chip" data-label="reduce" aria-pressed="false">Reduce</button>
+      <button class="chip" data-label="add" aria-pressed="false">Add</button>
+      <button class="chip" data-label="cut" aria-pressed="false">Removed</button>
+    </div>
+  </div>
+
+  <div id="semesters"></div>
+</section>
+
+<section id="ledger">
+  <h2>The funding ledger</h2>
+  <p class="lede">Left column pays for the right column. Nothing on the right exists unless something on the left paid for it.</p>
+  <div class="ledger">
+    <div class="col">
+      <h4>Taken out</h4>
+      <table id="out-table"></table>
+    </div>
+    <div class="col">
+      <h4>Put in</h4>
+      <table id="in-table"></table>
+    </div>
+  </div>
+</section>
+
+<section id="r25">
+  <h2>Where this differs from R25</h2>
+  <p class="lede">All comparisons are against the <strong>constituent-colleges</strong> R25 CSE structure, which is the document governing my college — not the affiliated-colleges version, which differs on DevOps.</p>
+  <table>
+    <tr><td><strong>Machine Learning placement</strong><div class="delta">R25 moves ML to II-II, the same semester as its own statistics prerequisite. I keep it in III-II, three semesters after COSM.</div></td><td class="tag t-reduce">differ</td></tr>
+    <tr><td><strong>DevOps</strong><div class="delta">R25 constituent cuts 4 credits to a 1-credit skill course. I keep all 4 and add Cloud &amp; Distributed Systems after it. JNTUH's own affiliated-colleges R25 keeps DevOps at 3 + lab.</div></td><td class="tag t-reduce">differ</td></tr>
+    <tr><td><strong>Generative AI</strong><div class="delta">R25 makes it a Professional Elective II option plus a 1-credit Prompt Engineering practical. I make it a 3 + 1 core and drop the standalone prompting credit.</div></td><td class="tag t-reduce">differ</td></tr>
+    <tr><td><strong>NLP and Cyber Security as separate cores</strong><div class="delta">R25 adds both in IV-I, 3 + 1 credits each. I fold NLP into Generative AI Systems and rewrite CS701PC's content instead, spending those 8 credits on Cloud and on Verification.</div></td><td class="tag t-reduce">differ</td></tr>
+    <tr><td><strong>Verification &amp; Evaluation of AI Systems</strong><div class="delta">R25 has no equivalent. Its whole answer to 2026 is more AI production content; nothing teaches deciding whether an output is right.</div></td><td class="tag t-add">new</td></tr>
+    <tr><td><strong>Digital Electronics folded into COA</strong><div class="delta">R25 drops it as a standalone course. So do I, for the same reason.</div></td><td class="tag t-keep">agree</td></tr>
+    <tr><td><strong>Deep Learning becomes core</strong><div class="delta">R25 promotes it from a PE-VI option. I agree, but place it in IV-I after ML rather than in III-II.</div></td><td class="tag t-keep">agree</td></tr>
+    <tr><td><strong>Data Structures moved to I-II</strong><div class="delta">R25 moves it a semester earlier. I do not — I-II is already full at 20 credits. I hold this position weakly.</div></td><td class="tag t-reduce">differ</td></tr>
+  </table>
+</section>
+
+<footer>
+  <p>Sources, evidence, the five (a)/(b) model tests and the full seven-section report are in the repository. Primary documents: R22 B.Tech CSE Course Structure &amp; Syllabus (JNTUH), downloaded 14 September 2026; R25 B.Tech CSE Course Structure, JNTUH constituent engineering colleges.</p>
+  <p>Student submission for the HKAIVERSE Round 2 Curriculum Intelligence Challenge. No curriculum is being changed as a result of this.</p>
+</footer>
+
+</div>
+
+<script>
+const COURSES = [
+ // year, sem label, code, name, r22, new, label
+ [1,"I Year I Semester","MA101BS","Matrices and Calculus",4,4,"keep"],
+ [1,"I Year I Semester","CH102BS","Engineering Chemistry",4,3,"reduce"],
+ [1,"I Year I Semester","CS103ES","Programming for Problem Solving",3,3,"keep"],
+ [1,"I Year I Semester","EE104ES","Basic Electrical Engineering",2,2,""],
+ [1,"I Year I Semester","ME105ES","Computer Aided Engineering Graphics",3,2,"reduce"],
+ [1,"I Year I Semester","CS106ES","Elements of CSE",1,1,""],
+ [1,"I Year I Semester","CH107BS","Engineering Chemistry Lab",1,1,""],
+ [1,"I Year I Semester","CS108ES","Programming for Problem Solving Lab",1,1,""],
+ [1,"I Year I Semester","EE109ES","Basic Electrical Engineering Lab",1,1,""],
+ [1,"I Year I Semester","new","Linux, Shell and Version Control (Git)",0,2,"add"],
+
+ [1,"I Year II Semester","MA201BS","Ordinary Differential Equations and Vector Calculus",4,4,""],
+ [1,"I Year II Semester","PH202BS","Applied Physics",4,3,"reduce"],
+ [1,"I Year II Semester","ME203ES","Engineering Workshop",2.5,1.5,"reduce"],
+ [1,"I Year II Semester","EN204HS","English for Skill Enhancement",2,2,""],
+ [1,"I Year II Semester","EC205ES","Electronic Devices and Circuits",2,2,""],
+ [1,"I Year II Semester","CS206ES","Python Programming Lab",2,2,""],
+ [1,"I Year II Semester","PH207BS","Applied Physics Lab",1.5,1.5,""],
+ [1,"I Year II Semester","EN208HS","English Language and Communication Skills Lab",1,1,""],
+ [1,"I Year II Semester","CS209ES","IT Workshop",1,0,"cut"],
+ [1,"I Year II Semester","new","Linear Algebra and Optimisation for Computing",0,3,"add"],
+
+ [2,"II Year I Semester","CS301PC","Digital Electronics",3,0,"cut"],
+ [2,"II Year I Semester","CS302PC","Data Structures",3,3,"keep"],
+ [2,"II Year I Semester","CS303PC","Computer Oriented Statistical Methods",4,4,"keep"],
+ [2,"II Year I Semester","CS304PC","Computer Organization and Architecture",3,4,"update"],
+ [2,"II Year I Semester","CS305PC","Object Oriented Programming through Java",3,3,"update"],
+ [2,"II Year I Semester","CS306PC","Data Structures Lab",1.5,1.5,""],
+ [2,"II Year I Semester","CS307PC","OOP through Java Lab",1.5,1.5,""],
+ [2,"II Year I Semester","CS308PC","Data Visualization – R / Power BI",1,0,"cut"],
+ [2,"II Year I Semester","new","Web and API Engineering",0,3,"add"],
+
+ [2,"II Year II Semester","CS401PC","Discrete Mathematics",3,3,"update"],
+ [2,"II Year II Semester","SM402MS","Business Economics and Financial Analysis",3,2,"reduce"],
+ [2,"II Year II Semester","CS403PC","Operating Systems",3,3,"keep"],
+ [2,"II Year II Semester","CS404PC","Database Management Systems",3,3,"update"],
+ [2,"II Year II Semester","CS405PC","Software Engineering",3,2,"reduce"],
+ [2,"II Year II Semester","CS406PC","Operating Systems Lab",1,1,""],
+ [2,"II Year II Semester","CS407PC","DBMS Lab",1,1,""],
+ [2,"II Year II Semester","CS408PC","Real-time Research / Societal Project",2,2,""],
+ [2,"II Year II Semester","CS409PC","Node JS / React JS / Django",1,0,"cut"],
+ [2,"II Year II Semester","new","Software Practice: Reading Code, Review, Testing and CI",0,3,"add"],
+
+ [3,"III Year I Semester","CS501PC","Design and Analysis of Algorithms",4,4,"keep"],
+ [3,"III Year I Semester","CS502PC","Computer Networks",3,3,"keep"],
+ [3,"III Year I Semester","CS503PC","DevOps",3,3,"keep"],
+ [3,"III Year I Semester","—","Professional Elective I",3,3,""],
+ [3,"III Year I Semester","—","Professional Elective II",3,0,"cut"],
+ [3,"III Year I Semester","CS504PC","Computer Networks Lab",1,1,""],
+ [3,"III Year I Semester","CS505PC","DevOps Lab",1,1,"keep"],
+ [3,"III Year I Semester","EN508HS","Advanced English Communication Skills Lab",1,1,""],
+ [3,"III Year I Semester","CS506PC","UI Design – Flutter",1,0,"cut"],
+ [3,"III Year I Semester","new","Data Systems: NoSQL, Distributed Storage and Vector Retrieval",0,3,"add"],
+ [3,"III Year I Semester","new","Data Systems Lab",0,1,"add"],
+
+ [3,"III Year II Semester","CS601PC","Machine Learning",3,3,"update"],
+ [3,"III Year II Semester","CS602PC","Formal Languages and Automata Theory",3,0,"cut"],
+ [3,"III Year II Semester","CS603PC","Artificial Intelligence",3,3,"update"],
+ [3,"III Year II Semester","—","Professional Elective III",3,3,""],
+ [3,"III Year II Semester","—","Open Elective I",3,3,""],
+ [3,"III Year II Semester","CS604PC","Machine Learning Lab",1,1,""],
+ [3,"III Year II Semester","CS605PC","Artificial Intelligence Lab",1,1,""],
+ [3,"III Year II Semester","—","Professional Elective III Lab",1,1,""],
+ [3,"III Year II Semester","CS606PC","Skill Development / internship preparation",2,1,"reduce"],
+ [3,"III Year II Semester","new","Cloud and Distributed Systems",0,3,"add"],
+ [3,"III Year II Semester","new","Cloud and Distributed Systems Lab",0,1,"add"],
+
+ [4,"IV Year I Semester","CS701PC","Cryptography and Network Security",3,3,"update"],
+ [4,"IV Year I Semester","CS703PC","Cryptography and Network Security Lab",1,1,""],
+ [4,"IV Year I Semester","CS702PC","Automata Theory and Compiler Design (merged with CS602PC)",3,4,"update"],
+ [4,"IV Year I Semester","CS704PC","Automata Theory and Compiler Design Lab",1,1,""],
+ [4,"IV Year I Semester","—","Professional Elective IV",3,3,""],
+ [4,"IV Year I Semester","—","Professional Elective V",3,0,"cut"],
+ [4,"IV Year I Semester","—","Open Elective II",3,0,"cut"],
+ [4,"IV Year I Semester","new","Deep Learning",0,3,"add"],
+ [4,"IV Year I Semester","new","Deep Learning Lab",0,1,"add"],
+ [4,"IV Year I Semester","CS705PC","Project Stage I",3,3,""],
+ [4,"IV Year I Semester","new","Industry Internship, 8 weeks, assessed",0,1,"add"],
+
+ [4,"IV Year II Semester","CS801PC","Professional Practice and Ethics (was Organizational Behavior)",3,2,"reduce"],
+ [4,"IV Year II Semester","—","Professional Elective VI",3,0,"cut"],
+ [4,"IV Year II Semester","—","Open Elective III",3,0,"cut"],
+ [4,"IV Year II Semester","new","Generative AI Systems",0,3,"add"],
+ [4,"IV Year II Semester","new","Generative AI Systems Lab",0,1,"add"],
+ [4,"IV Year II Semester","new","Verification and Evaluation of AI Systems",0,3,"add"],
+ [4,"IV Year II Semester","—","Project Stage II including Seminar",11,11,""]
+];
+
+const LEDGER_IN = [
+ ["Linux, Shell and Version Control (Git)","I-I",2,"Engineering Chemistry CH102BS 4→3 (1) + Engineering Graphics ME105ES 3→2 (1)"],
+ ["Linear Algebra and Optimisation for Computing","I-II",3,"Applied Physics PH202BS 4→3 (1) + Engineering Workshop ME203ES 2.5→1.5 (1) + IT Workshop CS209ES 1→0 (1)"],
+ ["Computer Organization and Architecture, expanded","II-I",1,"Digital Electronics CS301PC 3→0 (1 of 3)"],
+ ["Web and API Engineering","II-I",3,"Digital Electronics CS301PC, remaining (2) + Data Visualization CS308PC 1→0 (1)"],
+ ["Software Practice: Reading Code, Review, Testing and CI","II-II",3,"Software Engineering CS405PC 3→2 (1) + BEFA SM402MS 3→2 (1) + Node/React/Django CS409PC 1→0 (1)"],
+ ["Data Systems: NoSQL and Vector Retrieval, with lab","III-I",4,"Professional Elective II 3→0 (3) + UI Design Flutter CS506PC 1→0 (1)"],
+ ["Cloud and Distributed Systems, with lab","III-II",4,"FLAT CS602PC 3→0, merged into ATCD (3) + Skill Development CS606PC 2→1 (1)"],
+ ["Automata Theory and Compiler Design, uplift over CS702PC","IV-I",1,"Professional Elective V 3→0 (1 of 3)"],
+ ["Deep Learning, with lab","IV-I",4,"Professional Elective V, remaining (2) + Open Elective II 3→0 (2 of 3)"],
+ ["Industry Internship, credited","IV-I",1,"Open Elective II, remaining (1)"],
+ ["Generative AI Systems, with lab","IV-II",4,"Professional Elective VI 3→0 (3) + Organizational Behavior CS801PC 3→2 (1)"],
+ ["Verification and Evaluation of AI Systems","IV-II",3,"Open Elective III 3→0 (3)"]
+];
+
+const LEDGER_OUT = [
+ ["Engineering Chemistry CH102BS","I-I",1],["Engineering Graphics ME105ES","I-I",1],
+ ["Applied Physics PH202BS","I-II",1],["Engineering Workshop ME203ES","I-II",1],["IT Workshop CS209ES","I-II",1],
+ ["Digital Electronics CS301PC","II-I",3],["Data Visualization CS308PC","II-I",1],
+ ["Software Engineering CS405PC","II-II",1],["Business Economics SM402MS","II-II",1],["Node/React/Django CS409PC","II-II",1],
+ ["Professional Elective II","III-I",3],["UI Design Flutter CS506PC","III-I",1],
+ ["Formal Languages and Automata Theory CS602PC","III-II",3],["Skill Development CS606PC","III-II",1],
+ ["Professional Elective V","IV-I",3],["Open Elective II","IV-I",3],
+ ["Professional Elective VI","IV-II",3],["Organizational Behavior CS801PC","IV-II",1],["Open Elective III","IV-II",3]
+];
+
+const state = {view:"r22", year:"all", label:"all"};
+const TAGS = {keep:"KEEP",update:"UPDATE",reduce:"REDUCE",add:"ADD",cut:"REMOVED"};
+const fmt = n => Number.isInteger(n) ? n : n.toFixed(1);
+
+function render(){
+  const host = document.getElementById("semesters");
+  const isNew = state.view === "new";
+  const sems = [];
+  COURSES.forEach(c => { if(!sems.includes(c[1])) sems.push(c[1]); });
+
+  host.innerHTML = sems.map(sem => {
+    const all = COURSES.filter(c => c[1] === sem);
+    if(state.year !== "all" && String(all[0][0]) !== state.year) return "";
+
+    const total = all.reduce((s,c) => s + (isNew ? c[5] : c[4]), 0);
+    const rows = all.filter(c => {
+      if(!isNew && c[4] === 0) return false;              // new courses don't exist in R22
+      if(state.label === "all") return true;
+      return c[6] === state.label;
+    });
+
+    const body = rows.length ? rows.map(c => {
+      const [ , , code, name, r22, nw, label] = c;
+      const shown = isNew ? nw : r22;
+      const gone = isNew && nw === 0;
+      const fresh = isNew && r22 === 0;
+      let delta = "";
+      if(isNew && r22 !== nw && nw !== 0 && r22 !== 0) delta = `<div class="delta">was ${fmt(r22)}</div>`;
+      if(gone) delta = `<div class="delta">was ${fmt(r22)}, removed</div>`;
+      return `<tr class="${gone?"gone":""} ${fresh?"fresh":""}">
+        <td class="code">${code === "new" ? "new" : code}</td>
+        <td>${name}${delta}</td>
+        <td class="cr">${gone ? "—" : fmt(shown)}</td>
+        <td class="tag t-${label||"none"}">${TAGS[label]||""}</td></tr>`;
+    }).join("") : `<tr><td colspan="4" class="empty">No ${state.label === "all" ? "" : TAGS[state.label].toLowerCase()+" "}courses in this semester.</td></tr>`;
+
+    return `<div class="sem"><h3>${sem}<span>${fmt(total)} credits</span></h3><table>${body}</table></div>`;
+  }).join("") || `<p class="empty">Nothing matches that combination of filters.</p>`;
+}
+
+function renderLedger(){
+  const outT = LEDGER_OUT.reduce((s,r) => s + r[2], 0);
+  const inT = LEDGER_IN.reduce((s,r) => s + r[2], 0);
+  document.getElementById("out-table").innerHTML =
+    LEDGER_OUT.map(r => `<tr><td>${r[0]}<div class="delta">${r[1]}</div></td><td class="cr">−${r[2]}</td></tr>`).join("") +
+    `<tr class="foot"><td>Total removed</td><td class="cr">${outT}</td></tr>`;
+  document.getElementById("in-table").innerHTML =
+    LEDGER_IN.map(r => `<tr><td>${r[0]}<div class="delta">${r[1]} · paid for by ${r[3]}</div></td><td class="cr">+${r[2]}</td></tr>`).join("") +
+    `<tr class="foot"><td>Total added</td><td class="cr">${inT}</td></tr>`;
+  document.getElementById("b-out").textContent = outT;
+  document.getElementById("b-in").textContent = inT;
+  document.getElementById("b-net").textContent = inT - outT;
+  document.getElementById("b-pct").textContent = ((inT/160)*100).toFixed(1) + "%";
+}
+
+document.querySelectorAll("button.chip").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const key = btn.dataset.view !== undefined ? "view" : btn.dataset.year !== undefined ? "year" : "label";
+    state[key] = btn.dataset[key];
+    document.querySelectorAll(`button.chip[data-${key}]`).forEach(b =>
+      b.setAttribute("aria-pressed", String(b.dataset[key] === state[key])));
+    render();
+  });
+});
+
+renderLedger();
+render();
+</script>
+</body>
+</html>
