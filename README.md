@@ -389,7 +389,7 @@ Asks for: Python + Hugging Face Transformers/LangChain/PyTorch, understanding of
 **Job 4 — AI / ML Engineer Intern (LangChain, RAG, Agentic AI), CAW.Tech (CAW Studios), Hyderabad**
 Listing: https://cloudsoftsol.com/jobs/caw-tech-ai-ml-engineer-intern-langchain-rag-agentic-hyderabad-2026/
 Employer's own careers portal, given on that listing: https://caw.tech/careers/
-Checked live, 15 Sept 2026. Posted 26 May 2026.
+Checked live, 15 Sept 2026.
 
 *Source label, stated up front:* cloudsoftsol.com is a Hyderabad training institute that curates postings, so this is an **aggregator listing, not the employer's own page** — credible secondary by the classification the brief uses. I am using it because it is India-located, Hyderabad-based, explicitly open to freshers and final-year students, and because the employer-side portal is linked from it. Where the aggregator adds its own commentary (training pitches, salary estimates), I have ignored it and read only the responsibilities and requirements sections.
 
