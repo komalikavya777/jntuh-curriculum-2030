@@ -683,3 +683,68 @@ Being straight about the bill, since the funding table makes it easy to hide.
 **Basic sciences take 3 credits of cuts** (Chemistry 4→3, Physics 4→3, Engineering Workshop 2.5→1.5, Graphics 3→2). I have not verified whether AICTE's minimum basic-science credit requirement permits this, and I could not reach a current AICTE model-curriculum credit floor to check — recorded in Section 7c.
 
 **Nothing in the mathematics core, Data Structures, DAA, Operating Systems, DBMS, Computer Networks or Project Stage II is reduced by a single credit.** That is deliberate, and it is the main thing I would point at if accused of tearing the degree up: 127 of 160 credits are untouched, and the foundations argument in Section 3 is the reason.
+
+## 7 · What would make me wrong?
+
+### 7a — What evidence would disprove my central claim
+
+The whole redesign turns on one measurement: across five (a)/(b) tests, the model
+produced a passing artefact and missed the check that made it correct — the AVL deletion,
+the DBMS trigger, the DevOps pipeline's rollback and secrets handling, the left-recursive
+parser, the DFA proof. That pattern is why Verification & Evaluation of AI Systems exists
+in Section 6 rather than more AI-content courses like R25 chose.
+
+This would be disproven by a larger, more adversarial sample showing the opposite pattern —
+if I ran the same test across fifteen or twenty subjects, with multiple models, and found
+(b) was consistently thin rather than consistently present, that would mean my five tests
+were an unrepresentative sample, not a real pattern. It would also be disproven if the
+"verification gap" is already covered by something outside the curriculum entirely —
+automated testing, static analysis, on-the-job code review culture — making a dedicated
+3-credit course redundant rather than missing.
+
+A second, more immediate complication came from the one conversation this task required
+(full record in notes/conversation-notes.md). A recent graduate named Theory of Computation
+and Compiler Design specifically as subjects that felt important academically but had
+limited relevance once working — in tension with my own argument to keep and merge them
+(Section 3, item 8). My defence is narrow, not dismissive: my (a)/(b) test found a real,
+reproducible failure (a model crashing on the lab's own left-recursive grammar), which
+argues for what the course should test, not that the subject guarantees daily relevance for
+every graduate. One person's experience is not a refutation, but it is exactly the kind of
+evidence that could accumulate into one — if more graduates say the same thing, my case for
+these credits weakens. The same conversation, though, independently supported the Git gap,
+the deployment/testing gap, and the AI-productivity pattern behind the whole redesign — see
+notes/conversation-notes.md for where it agrees and disagrees with each claim.
+
+I have five tests, one model family, one session, and one conversation. That is a narrow
+base for a curriculum-wide claim, and I am stating that plainly rather than dressing five
+data points up as more than they are.
+
+### 7b — Something I changed my mind about
+
+I started by labelling DevOps REDUCE, following R25 constituent's own cut from 4 credits to
+1 — it read as the obvious, university-endorsed call. Working through the argument
+properly, I realised my actual reasoning pointed the other way: AI is accelerating
+automation specifically, which is DevOps's whole subject, so the skill should be worth more
+now, not less. The label and the argument were contradicting each other, and I only caught
+it because I had to write the argument out in full rather than just attach a label. I
+changed it to KEEP, with an explicit disagreement with R25 constituent — this is now
+Section 6.4, point 2, and it is the change I am most confident about in the entire report.
+
+### 7c — What I could not verify
+
+- **AICTE's minimum basic-science credit floor.** Section 6.6's redesign cuts Chemistry,
+Physics, Engineering Workshop and Graphics by a combined 3 credits. I could not locate a
+current, authoritative AICTE model-curriculum document stating a minimum required
+basic-science credit count for a CSE degree, so I cannot confirm this cut is compliant with
+that floor rather than merely with JNTUH's own regulation. Tried 15 September 2026.
+
+- **Stable links for a subset of GenAI/Data Scientist postings used in Section 5.** Several
+India-located postings I found while researching Section 5 were aggregator pages without a
+stable per-role URL, or had closed between finding and re-checking them — which is why
+Section 5 leans on a US-based Infosys posting with that caveat stated openly, alongside a
+second, India-located role added specifically to cover this gap. Checked 15 September 2026.
+
+- **Whether merging FLAT into ATCD, moving automata theory a full semester later (III-II →
+IV-I), causes real difficulty for students beyond my own judgement.** This rests on my own
+(a)/(b) finding and reasoning alone, not on outside evidence — and it is the same placement
+the one conversation I had put partial pressure on, from a different angle (see 7a).
