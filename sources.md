@@ -93,4 +93,3 @@ All sources grouped the way the brief itself groups them. Access dates recorded 
 
 ---
 
-**Note on access dates.** Two clusters: syllabus/regulation documents were read on 14 September 2026; job postings and Section 4's field-change sources were read on 15 September 2026. Where a source above does not match a date already given elsewhere in the report for the same fact, the report's own inline citation is authoritative — flag it in Section 7c rather than silently reconciling it.
