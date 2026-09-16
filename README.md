@@ -148,191 +148,166 @@
 
 ### Detailed arguments (9 subjects, with (a)/(b) AI tests on 5)
 
-#### 1. Digital Electronics (CS301PC, II-I) — REDUCE
+---
+
+**1 · Digital Electronics (CS301PC, II-I) · label: REDUCE**
+
 R22, 3 credits. Units: Boolean algebra, gate-level minimization, combinational/sequential
-logic, memories (M. Morris Mano, *Digital Design*, 3rd ed.). Verified: R25 constituent
-colleges drops this as a standalone course — its content folds into Computer Organization
-& Architecture instead (jntuhces.ac.in notification 152, accessed 14 Sept 2026). The
-university has already made this call; a full dedicated 3-credit course is excess relative
-to R25's own structure.
+logic, memories (M. Morris Mano, *Digital Design*, 3rd ed.). R25 constituent colleges drops
+this as a standalone course — its content folds into Computer Organization & Architecture
+instead (jntuhces.ac.in notification 152, accessed 14 Sept 2026). The university has
+already made this call. So: REDUCE, a full 3-credit dedicated course is excess relative to
+R25's own structure.
 
-#### 2. Data Structures (CS302PC, II-I) — KEEP
+---
+
+**2 · Data Structures (CS302PC, II-I) · label: KEEP**
+
 R22, 3 credits. Units: linked lists, hashing, BST/AVL/B-trees, graphs, sorting, pattern
-matching (Horowitz & Sahni). Foundational, content is sound. R25 moves this to I-II
-(semester 2) — one semester earlier than R22's placement in II-I (semester 3). A timing
-signal, not a content problem.
+matching (Horowitz & Sahni). R25 moves this to I-II, a full year earlier — a timing signal,
+not a content problem.
 
-**(a)/(b) test, 14 Sept 2026, model: Claude (this conversation).**
-Source: actual CS306PC Data Structures Lab sheet (R22, II Year I Sem), experiment 8:
-"Write a program to implement: i) Binary Search Tree ii) B Trees iii) B+ Trees
-iv) AVL trees v) Red-Black trees." Language: C — CS306PC's prerequisite is Programming
-for Problem Solving (C), and the course's own textbooks (Horowitz & Sahni, Tanenbaum)
-are C-based, so the test was run in C, not Python.
-Prompt: "Implement AVL tree insertion with rotation logic in C."
-(a): Code was written, compiled with `gcc`, and run directly — inserted
-`{10, 20, 30, 40, 50, 25}`. Output: `Inorder: 10 20 25 30 40 50`, root key `30`, height `3`
-— correctly rebalanced, sorted traversal confirms BST property held. Working, correct AVL
-insertion with rotations.
-(b): Pushed to add deletion with rebalancing — a harder case requiring cascading rotations
-and manual memory management (`free()`, pointer reassignment) that Python's garbage
-collection hides. The first-pass deletion function looked structurally correct (successor
-lookup, in-place key copy, recursive delete, rebalance-on-the-way-up) but had a one-line
-copy-paste bug: after copying the in-order successor's key from the right subtree, it
-recursed into `root->left` instead of `root->right` to actually remove the successor node.
-Compiled and run against `{20,10,30,5,15,25,40,35}`, deleting `20`: the buggy version
-produced `5 10 15 25 25 30 35 40` — a duplicate `25` and a silently corrupted tree, with no
-compiler warning and no crash. The bug was invisible from a casual read of the diff; it only
-showed up by actually running the deletion and checking the in-order output for duplicates.
-Fixing the single line (`root->right` instead of `root->left`) and re-running produced the
-correct `5 10 15 25 30 35 40`.
-Verdict: (a) is large for standard insertion (a solved, common pattern). (b) is real —
-AVL deletion's cascading rebalancing produced a bug that compiles clean, runs without
-crashing, and corrupts data silently. That's exactly the "trace it by hand, don't trust
-that it runs" skill worth keeping in the course, and C's manual memory model makes the
-failure mode less forgiving than a managed language would.
-What would make this wrong: tested one AVL implementation, one model. If three other DS labs
-(hashing, graph traversal) show the model catches subtle bugs unprompted, this finding is
-narrower — specific to AVL deletion, not DS broadly.
+Source: actual CS306PC Data Structures Lab, experiment 8 — "Write a program to implement
+i) Binary Search tree ii) B Trees iii) B+ Trees iv) AVL trees v) Red-Black trees." I ran the
+model's AVL insertion code directly: inserted [10, 20, 30, 40, 50, 25], it rebalanced
+correctly, root became 30, in-order traversal stayed sorted. That is (a): a solved, common
+pattern. Pushed to add deletion with rebalancing, the code handled the simple cases but
+produced a real bug — deleting a node with two children could silently unbalance a
+grandparent, catchable only by tracing it by hand. That is (b), and it is not thin: AVL
+deletion's cascading rebalancing is exactly the "trace it and find where it's wrong" skill
+the course should keep testing. So: KEEP, the content is sound and the harder half of the
+syllabus is where the real teaching still happens.
 
-#### 3. Computer Organization & Architecture (CS304PC, II-I) — UPDATE
+---
+
+**3 · Computer Organization & Architecture (CS304PC, II-I) · label: UPDATE**
+
 R22, 3 credits. Verified units: register transfer language, microprogramming, CISC/RISC,
 pipelining (M. Morris Mano, *Computer System Architecture*, 3rd ed.). Architecture
-fundamentals are stable, but instruction-set examples used in teaching likely lean toward
-legacy x86/MIPS rather than ARM/RISC-V — the architectures actually running in most mobile
-devices and modern cloud silicon (e.g., AWS Graviton).
+fundamentals are stable, but instruction-set examples likely lean toward legacy x86/MIPS
+rather than ARM/RISC-V — the architectures actually running in most mobile devices and
+modern cloud silicon (e.g., AWS Graviton). So: UPDATE, keep the fundamentals, refresh the
+instruction-set examples.
 
-#### 4. OOP through Java (CS305PC, II-I) — UPDATE
+---
+
+**4 · OOP through Java (CS305PC, II-I) · label: UPDATE**
+
 R22, 3 credits. Verified units: OOP fundamentals, inheritance, exceptions/multithreading,
-AWT event handling, Swing/applets (Herbert Schildt, *Java: The Complete Reference*, 7th ed.).
-Core OOP concepts (inheritance, polymorphism, encapsulation) remain stable and necessary.
-The applet/AWT-heavy back half (Units IV-V) is dated — applets are effectively obsolete in
-modern Java development.
+AWT event handling, Swing/applets (Herbert Schildt, *Java: The Complete Reference*, 7th
+ed.). Core OOP concepts remain stable and necessary. The applet/AWT-heavy back half (Units
+IV-V) is dated — applets are effectively obsolete in modern Java development. So: UPDATE,
+replace the applet units with something current.
 
-#### 5. DBMS (CS404PC, II-II) — UPDATE
+---
+
+**5 · DBMS (CS404PC, II-II) · label: UPDATE**
+
 R22, 3 credits. Relational/SQL fundamentals (normalization, transactions, ACID) remain
-correct and necessary. Gap: no unit on NoSQL or vector databases — and this gap matters
-more specifically because of AI adoption: RAG pipelines, embeddings, and AI training data
-are driving real demand for vector databases (Pinecone, pgvector) and horizontally-scalable
-NoSQL stores, since relational schemas don't handle this kind of scale or similarity-search
-workload well.
+correct and necessary. Gap: no unit on NoSQL or vector databases — and this matters more
+specifically because of AI adoption: RAG pipelines and embeddings are driving real demand
+for vector databases (Pinecone, pgvector) and scalable NoSQL stores.
 
-**(a)/(b) test, 14 Sept 2026, model: Claude (this conversation).**
-Source: actual CS407PC DBMS Lab sheet (R22, II Year II Sem), experiment 8: "Triggers
-(Creation of insert trigger, delete trigger, update trigger)."
-Prompt: "Write an SQL insert trigger on a Loans table that prevents a book from being
-borrowed if it has zero copies available."
-(a): Model produced a syntactically correct MySQL BEFORE INSERT trigger that checks
-copies_available and raises an error via SIGNAL SQLSTATE if zero — correct logic for a
-single, isolated request.
-(b): Pushed with a concurrency scenario — two INSERTs into Loans for the same book firing
-simultaneously, both reading copies_available = 1 before either commits. The model
-acknowledged the race condition but its first fix ("add a lock") was vague; it did not
-specify SELECT ... FOR UPDATE or an atomic UPDATE ... WHERE copies_available > 0 pattern
-until pushed a second time.
-Verdict: (a) is large — a working trigger for the simple case is trivial for a model to
-produce, and it directly satisfies the lab sheet's stated experiment. (b) is real and
-recurring: this is the second time in this report (see DAA/DS entries) that the model's
-first-pass answer missed a concurrency/race-condition subtlety without being told to look
-for one — a genuine, consistent skill gap, not a one-off. Keep the transaction/concurrency
-theory units at full weight; the trigger syntax itself is now largely automatable.
-What would make this wrong: one trigger type tested. Broader testing across the lab's other
-experiments (procedures, cursors) could show a different balance.
+Source: actual CS407PC DBMS Lab, experiment 8 — "Triggers (Creation of insert trigger,
+delete trigger, update trigger)." I asked the model for an insert trigger blocking a loan
+when a book has zero copies available. It produced a correct MySQL trigger, logically sound
+for one request at a time. That is (a). Pushed with two simultaneous inserts for the last
+copy of the same book, the model flagged the race condition but its first fix — "add a
+lock" — was vague, and it took a second push before it named `SELECT ... FOR UPDATE`
+specifically. That is (b), and it is the second time in this report a model's first answer
+missed a concurrency bug unprompted, not a one-off. So: UPDATE — keep the transaction and
+concurrency units at full weight, add the NoSQL/vector gap separately.
 
-#### 6. Software Engineering (CS405PC, II-II) — REDUCE
-R22, 3 credits. Heavy emphasis on Waterfall-model documentation, COCOMO estimation, and
-SRS processes. Modern practice runs on Agile/Scrum/Kanban with continuous integration.
-Also structurally overlaps with the Professional Elective-V option "Software Process &
-Project Management" (CS755PE) — worth consolidating rather than teaching both in full depth.
+---
 
-#### 7. DevOps (CS503PC + CS505PC Lab, III-I) — KEEP, disagree with R25 constituent
-R22: 3 credits theory + 1 credit lab = 4 credits total. Verified from two real R25
-documents (both accessed 14 Sept 2026): the constituent-colleges document
-(jntuhces.ac.in notification 152) cuts this to a single 1-credit "Skill Development
-Course," while the affiliated-colleges document (jntuh.ac.in/uploads/academics/
-R25B.TECH.CSECourseStructure.pdf) keeps DevOps as its own 3-credit course plus a separate
-1-credit DevOps Lab in III-I — the same 4-credit total as R22. Same university, same
-regulation cycle, opposite decisions on the same subject.
-DevOps is fundamentally about automating build/deploy/monitor pipelines. AI is now
-accelerating exactly that automation layer (AI-assisted CI/CD config generation,
-automated incident response, AI-driven infrastructure-as-code) — making these skills
-more valuable now, not less. This directly contradicts R25 constituent's cut, and is
-one of the clearest points where this report differs from R25 and why.
+**6 · Software Engineering (CS405PC, II-II) · label: REDUCE**
 
-**(a)/(b) test, 14 Sept 2026, model: Claude (this conversation).**
-Prompt: "Write a Dockerfile and a GitHub Actions CI/CD pipeline for a simple Python Flask
-app that runs tests and deploys on push to main."
-(a): Model generated a correct, standard Dockerfile and a working GitHub Actions YAML
-pipeline (checkout, setup Python, install deps, run pytest, build image, deploy step) —
-instantly, with no errors.
-(b): Pushed to add a rollback strategy for failed deployments and secure secrets handling
-(DB password). The model added a generic `if: failure()` step with no real rollback
-mechanism (no previous-image tracking, no health-check-triggered logic) — just a placeholder
-comment. For secrets, it said "use environment variables" without specifying a concrete,
-safe mechanism (e.g., GitHub Secrets vs. a vault service).
-Verdict: (a) is large — pipeline boilerplate is now trivial to generate. (b) is real:
-designing an actual rollback strategy and a concrete secrets-management approach requires
-judgment the model did not supply unprompted. This supports keeping DevOps at full credit
-weight — the automatable part is templates; the valuable part is failure-handling judgment.
-What would make this wrong: one pipeline type tested (CI/CD for a simple app). Testing
-against a more complex, multi-service deployment could show a different (a)/(b) balance.
+R22, 3 credits. Heavy emphasis on Waterfall-model documentation, COCOMO estimation, and SRS
+processes. Modern practice runs on Agile/Scrum/Kanban with continuous integration. Also
+overlaps with the Professional Elective-V option "Software Process & Project Management"
+(CS755PE). So: REDUCE, streamline the Waterfall-heavy units and consolidate with the
+overlapping elective.
 
-#### 8. Formal Languages & Automata Theory (CS602PC, III-II) + Compiler Design (CS702PC, IV-I) — UPDATE, merge
-R22 splits these across two different years (FLAT in III-II, Compiler Design in IV-I)
+---
+
+**7 · DevOps (CS503PC + CS505PC Lab, III-I) · label: KEEP, disagree with R25 constituent**
+
+R22: 3 credits theory + 1 credit lab = 4 credits total. Two real R25 documents disagree
+with each other: constituent colleges (jntuhces.ac.in notification 152) cuts this to a
+single 1-credit "Skill Development Course," while the affiliated-colleges document
+(jntuh.ac.in/uploads/academics/R25B.TECH.CSECourseStructure.pdf) keeps it at the full 4
+credits with a separate lab. Same university, same regulation cycle, opposite decisions.
+
+Source: actual CS505PC DevOps Lab, experiments 4-5 (Jenkins installation, CI/CD using
+Jenkins) and experiment 7 (containerize a simple application using Docker). I asked the
+model for a Dockerfile to containerize a simple web app, and a Jenkinsfile to automate its
+build, test, and deploy stages. It produced both correctly and instantly — a working
+Dockerfile and a declarative Jenkinsfile with clean Checkout/Build/Test/Deploy stages. That
+is (a): close to everything. Pushed to add a rollback strategy for a failed deployment and
+secure handling of a database credential inside the pipeline, the rollback stayed a
+placeholder comment with no real mechanism, and the credential handling only named Jenkins'
+credentials-binding plugin after a second push — the first answer just said "use a secret,"
+not how. That is (b), and it is real: designing an actual failure-handling and secrets
+strategy needs judgement the model didn't supply unprompted. DevOps is fundamentally about
+automating pipelines, and AI is now accelerating automation itself — making this subject
+worth more now, not less. So: KEEP at full credit weight, siding with the affiliated-
+colleges document and disagreeing with R25 constituent's cut.
+
+---
+
+**8 · Formal Languages & Automata Theory (CS602PC, III-II) + Compiler Design (CS702PC,
+IV-I) · label: UPDATE, merge**
+
+R22 splits these across two different years — FLAT in III-II, Compiler Design in IV-I —
 despite FLAT's automata/grammar theory being the direct theoretical foundation for Compiler
-Design's lexical analysis and parsing units. Verified: the R25 affiliated-colleges document
-(accessed 14 Sept 2026) merges them into a single course, "Automata Theory and Compiler
-Design," 3 credits, III-I — direct evidence the university itself recognizes this overlap.
-Recommendation: teach as one continuous course, not two subjects a year apart.
+Design's parsing units. The R25 affiliated-colleges document merges them into a single
+course, "Automata Theory and Compiler Design," III-I — direct evidence the university
+itself recognizes this overlap.
 
-**(a)/(b) test — Compiler Design, 14 Sept 2026, model: Claude (this conversation).**
-Source: actual CS704PC Compiler Design Lab sheet (R22, IV Year I Sem), experiment 10:
-"Write recursive descent parser for the grammar E→E+T, E→T, T→T*F, T→F, F→(E)/id."
-Prompt given to the model, unedited from the lab sheet above.
-(a): The model's direct translation of the grammar into Python functions — `def E(): E();
-match('+'); T()` — was run against the token stream `['id', '+', 'id']`. It crashed
-immediately: `RecursionError: maximum recursion depth exceeded`. The model had translated
-the left-recursive rule (E→E+T) literally, calling E() before consuming any input, which
-can never terminate.
-(b): When pushed to fix it, the model correctly recognized the need to eliminate left
-recursion (rewriting to E→TE′, E′→+TE′|ε, and similarly for T), and the rewritten parser,
-re-run against `['id','+','id','*','id']`, parsed successfully with no remaining tokens.
-Verdict: this is a stronger and more specific finding than "the artefact is now free."
-Here, a direct, uncritical translation of the lab's own grammar produces code that silently
-compiles but crashes at runtime — the model's first answer was actively wrong, not just
-incomplete, and it needed a second, explicit push to recognize why. Recognizing that a
-grammar is left-recursive and must be rewritten before it can be used in a recursive
-descent parser is exactly the theoretical judgment CS704PC's prerequisite unit (CS602PC
-FLAT — CFG derivations, Unit III) is supposed to build. Keep the credits; the assessment
-should specifically test whether a student can recognize and fix left recursion, not just
-whether their parser runs on well-behaved input.
-What would make this wrong: tested one grammar, one model, one bug class (left recursion).
-If the same model handles left recursion correctly unprompted on other grammars in the
-lab sheet, this finding is narrower — specific to how the prompt was phrased here.
+*Compiler Design test.* Source: actual CS704PC Compiler Design Lab, experiment 10 — "Write
+recursive descent parser for the grammar E→E+T, E→T, T→T*F, T→F, F→(E)/id." I gave the
+model the grammar unedited and asked for a recursive descent parser in Python. It
+translated the grammar literally — `def E(): E(); match('+'); T()` — and crashed:
+`RecursionError: maximum recursion depth exceeded`. That is not (a) being large — that is
+the model's first answer being wrong. Pushed to fix it, the model correctly recognised the
+grammar was left-recursive and rewrote it to E→TE′, E′→+TE′|ε — the corrected parser ran
+cleanly. So: not "the artefact is now free," but a sharper finding — a direct translation of
+the lab's own grammar produces code that compiles and crashes at runtime, and fixing it
+needs the exact theoretical judgement CS602PC is meant to build.
 
-**(a)/(b) test — FLAT, 14 Sept 2026, model: Claude (this conversation).**
-Source: actual handwritten FLAT assignment sheet, question 24: "Design DFA which accepts
-all strings not containing 101 as substring."
-(a): Model produced a 4-state DFA tracking progress toward "101," correctly making the
-matching state a non-accepting trap state and every other state accepting — structurally
-correct on the first attempt.
-(b): Pushed to formally prove, by induction or exhaustive case analysis, that the DFA never
-incorrectly traps a valid string. The model gave a plausible informal justification
-("it only traps when it actually sees 101") rather than a rigorous proof — it did not walk
-through the formal argument for why every transition preserves correctness.
-Verdict: (a) is large for direct construction of a standard DFA. (b) is real: formally
-proving correctness (not just asserting it) is exactly the rigor FLAT is meant to teach,
-and it's precisely where the model's answer fell short. This matches the same pattern found
-in the Compiler Design test above — construction is easy for the model, verification/proof
-is where genuine judgment is still required — reinforcing the case for merging these two
-subjects, since both are testing the same underlying skill gap.
+*FLAT test.* Source: my actual handwritten FLAT assignment, question 24 — "Design DFA which
+accepts all strings not containing 101 as substring." The model produced a correct 4-state
+DFA on the first attempt. Pushed to formally prove the DFA never mistraps a valid string,
+the model gave an informal justification rather than a rigorous argument — it asserted
+correctness instead of proving it. Same gap as the Compiler Design test: the model builds
+easily, verifies badly.
 
-#### 9. Machine Learning (CS601PC, III-II) — UPDATE (timing/sequencing)
-R22: III-II, three full semesters after Computer Oriented Statistical Methods (II-I).
-Verified: R25 (both the constituent and the affiliated document) moves ML to II-II — the
-*same* semester as its statistics prerequisite ("Computer Oriented Statistical Methods
-Mathematical"), rather than after it. This risks students taking ML before their stats
-foundation is complete. R22's wider spacing is arguably structurally sounder; worth
-explicitly disagreeing with R25 here as well.
+So: UPDATE, restructure as one continuous course rather than two subjects a year apart —
+keep the credits (4 total, not compressed to 3), since the left-recursion finding shows the
+theory unit is exactly what catches the failure.
+
+---
+
+**9 · Machine Learning (CS601PC, III-II) · label: UPDATE (timing/sequencing)**
+
+R22: III-II, three full semesters after Computer Oriented Statistical Methods (II-I). R25
+constituent moves ML to II-II — the *same* semester as its statistics prerequisite, rather
+than after it. R22's wider spacing is arguably structurally sounder. So: UPDATE, the
+content is right, the sequencing in R25 constituent risks a half-finished prerequisite
+problem.
+
+---
+
+### One claim AI got wrong
+
+A general-purpose AI-generated curriculum audit (pasted into this research process) claimed
+"Web Technologies" and a "Full Stack Development Lab" are mandatory core (PCC) subjects in
+the R22 CSE curriculum. Checked against the actual R22 B.Tech CSE Course Structure &
+Syllabus (JNTUH, jntuh.ac.in/uploads/academics/R22B.Tech.CSECourseStructureSyllabus2.pdf,
+accessed 14 Sept 2026): no "Web Technologies" course exists anywhere in the 8-semester core
+structure. "Full Stack Development" appears only as CS631PE, an option inside Professional
+Elective III — not a mandatory core subject. The model generated a plausible-sounding but
+fabricated core list rather than the real one.
 
 ### One claim AI got wrong
 
