@@ -300,17 +300,6 @@ problem.
 
 ### One claim AI got wrong
 
-A general-purpose AI-generated curriculum audit (pasted into this research process) claimed
-"Web Technologies" and a "Full Stack Development Lab" are mandatory core (PCC) subjects in
-the R22 CSE curriculum. Checked against the actual R22 B.Tech CSE Course Structure &
-Syllabus (JNTUH, jntuh.ac.in/uploads/academics/R22B.Tech.CSECourseStructureSyllabus2.pdf,
-accessed 14 Sept 2026): no "Web Technologies" course exists anywhere in the 8-semester core
-structure. "Full Stack Development" appears only as CS631PE, an option inside Professional
-Elective III — not a mandatory core subject. The model generated a plausible-sounding but
-fabricated core list rather than the real one.
-
-### One claim AI got wrong
-
 A general-purpose AI-generated curriculum audit (model name - Gemini 3.6 Flash) claimed "Web Technologies" and a "Full Stack Development Lab" are mandatory
 core (PCC) subjects in the R22 CSE curriculum. Checked against the actual R22 B.Tech CSE
 Course Structure & Syllabus (JNTUH, jntuh.ac.in/uploads/academics/
