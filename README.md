@@ -743,8 +743,3 @@ India-located postings I found while researching Section 5 were aggregator pages
 stable per-role URL, or had closed between finding and re-checking them — which is why
 Section 5 leans on a US-based Infosys posting with that caveat stated openly, alongside a
 second, India-located role added specifically to cover this gap. Checked 15 September 2026.
-
-- **Whether merging FLAT into ATCD, moving automata theory a full semester later (III-II →
-IV-I), causes real difficulty for students beyond my own judgement.** This rests on my own
-(a)/(b) finding and reasoning alone, not on outside evidence — and it is the same placement
-the one conversation I had put partial pressure on, from a different angle (see 7a).
